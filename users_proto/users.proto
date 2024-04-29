@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option go_package = "github.com/overlorddamygod/users-microservice/users-proto";
+
+package users;
+
+service UserService {
+  rpc AddUser (AddUserRequest) returns (User) {}
+  rpc GetUserById (GetUserByIdRequest) returns (User) {}
+  rpc GetAllUsers (GetAllUsersRequest) returns (GetAllUsersResponse) {}
+}
+
+message AddUserRequest {
+  string name = 1;
+  string email = 2;
+}
+
+message GetUserByIdRequest {
+  int32 id = 1;
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message GetAllUsersRequest {
+}
+
+message GetAllUsersResponse {
+  repeated User users = 1;
+}
